@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.demo.controllers.ReportsController"
+            prefWidth="1400" prefHeight="800">
+    <children>
+        <!-- Top Navigation Bar -->
+        <HBox styleClass="topbar" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+            <children>
+                <Button text="← Dashboard" onAction="#goToDashboard" styleClass="ghost-button"/>
+                <Region HBox.hgrow="ALWAYS"/>
+            </children>
+        </HBox>
+        
+        <!-- Main Content -->
+        <VBox spacing="20" AnchorPane.topAnchor="70" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" 
+              style="-fx-padding: 20;">
+            <children>
+                <Label text="📊 Sales Reports" styleClass="title-label"/>
+                
+                <!-- Date Range Filter -->
+                <VBox styleClass="card">
+                    <children>
+                        <Label text="Date Range" styleClass="subtitle-label"/>
+                        <HBox spacing="15" alignment="CENTER_LEFT">
+                            <children>
+                                <VBox>
+                                    <children>
+                                        <Label text="Start Date:" styleClass="field-label"/>
+                                        <DatePicker fx:id="startDatePicker" styleClass="combo-field"/>
+                                    </children>
+                                </VBox>
+                                <VBox>
+                                    <children>
+                                        <Label text="End Date:" styleClass="field-label"/>
+                                        <DatePicker fx:id="endDatePicker" styleClass="combo-field"/>
+                                    </children>
+                                </VBox>
+                                <Button fx:id="generateReportButton" text="Generate Report" onAction="#generateReport" styleClass="primary-button"/>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+                
+                <!-- Statistics Cards -->
+                <HBox spacing="20" alignment="CENTER_LEFT">
+                    <children>
+                        <VBox styleClass="card" prefWidth="200">
+                            <children>
+                                <Label text="Total Orders" styleClass="subtitle-label"/>
+                                <Label fx:id="totalOrdersLabel" text="0" styleClass="title-label"/>
+                            </children>
+                        </VBox>
+                        <VBox styleClass="card" prefWidth="200">
+                            <children>
+                                <Label text="Total Revenue" styleClass="subtitle-label"/>
+                                <Label fx:id="totalRevenueLabel" text="0.00" styleClass="title-label"/>
+                            </children>
+                        </VBox>
+                        <VBox styleClass="card" prefWidth="200">
+                            <children>
+                                <Label text="Total Items Sold" styleClass="subtitle-label"/>
+                                <Label fx:id="totalItemsSoldLabel" text="0" styleClass="title-label"/>
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+                
+                <!-- Data Tables -->
+                <HBox spacing="20" HBox.hgrow="ALWAYS">
+                    <children>
+                        <!-- Orders Table -->
+                        <VBox styleClass="card" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label text="Orders" styleClass="subtitle-label"/>
+                                <TableView fx:id="ordersTable" prefHeight="300">
+                                    <columns>
+                                        <TableColumn fx:id="orderIdColumn" text="Order #" prefWidth="80"/>
+                                        <TableColumn fx:id="customerNameColumn" text="Customer" prefWidth="180"/>
+                                        <TableColumn fx:id="statusColumn" text="Status" prefWidth="100"/>
+                                        <TableColumn fx:id="placedAtColumn" text="Placed At" prefWidth="180"/>
+                                        <TableColumn fx:id="totalColumn" text="Total" prefWidth="100"/>
+                                    </columns>
+                                </TableView>
+                            </children>
+                        </VBox>
+                        
+                        <!-- Products Table -->
+                        <VBox styleClass="card" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label text="Products Sold" styleClass="subtitle-label"/>
+                                <TableView fx:id="productsTable" prefHeight="300">
+                                    <columns>
+                                        <TableColumn fx:id="productNameColumn" text="Product" prefWidth="200"/>
+                                        <TableColumn fx:id="categoryColumn" text="Category" prefWidth="150"/>
+                                        <TableColumn fx:id="quantitySoldColumn" text="Qty Sold" prefWidth="100"/>
+                                        <TableColumn fx:id="revenueColumn" text="Revenue" prefWidth="100"/>
+                                    </columns>
+                                </TableView>
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>
+

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+
+<?import java.lang.String?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.demo.controllers.RegisterController"
+            prefWidth="980" prefHeight="640">
+    <children>
+        <StackPane AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0"
+                   styleClass="auth-surface">
+            <children>
+                <VBox spacing="18" alignment="CENTER">
+                    <children>
+                        <Label text="Create your account ✨" styleClass="title-label"/>
+                        <Label text="It's fast and easy" styleClass="subtitle-label"/>
+                        <VBox spacing="16" maxWidth="520" styleClass="form-card">
+                            <children>
+                                <GridPane hgap="12" vgap="12">
+                                    <columnConstraints>
+                                        <ColumnConstraints percentWidth="45"/>
+                                        <ColumnConstraints percentWidth="55"/>
+                                    </columnConstraints>
+                                    <children>
+                                        <Label text="Username" styleClass="field-label" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                                        <TextField fx:id="username" promptText="username" styleClass="form-field"
+                                                   GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                                        <Label text="Email" styleClass="field-label" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                                        <TextField fx:id="email" promptText="name@example.com" styleClass="form-field"
+                                                   GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                                        <Label text="Password" styleClass="field-label" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                                        <PasswordField fx:id="password" promptText="••••••••" styleClass="password-field"
+                                                       GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                                        <Label text="Confirm password" styleClass="field-label" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                                        <PasswordField fx:id="confirmPassword" promptText="••••••••" styleClass="password-field"
+                                                       GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+                                        <Label text="First name" styleClass="field-label" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                                        <TextField fx:id="firstName" promptText="First Name" styleClass="form-field"
+                                                   GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+                                        <Label text="Last name" styleClass="field-label" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                                        <TextField fx:id="lastName" promptText="Last Name" styleClass="form-field"
+                                                   GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+                                        <Label text="Phone " styleClass="field-label" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+                                        <TextField fx:id="phone" promptText="+961..." styleClass="form-field"
+                                                   GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+                                    </children>
+                                </GridPane>
+
+                                <Button text="Create account" onAction="#onRegister" styleClass="primary-button" maxWidth="Infinity"/>
+
+                                <HBox alignment="CENTER">
+                                    <children>
+                                        <Label text="Already have an account?" styleClass="subtitle-label"/>
+                                        <Hyperlink text="Sign in" onAction="#goLogin"/>
+                                    </children>
+                                    <spacing>6</spacing>
+                                </HBox>
+                            </children>
+                        </VBox>
+                    </children>
+                </VBox>
+            </children>
+        </StackPane>
+    </children>
+</AnchorPane>

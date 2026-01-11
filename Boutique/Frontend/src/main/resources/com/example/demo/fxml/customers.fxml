@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.demo.controllers.CustomerController"
+            prefWidth="1200" prefHeight="800">
+    <children>
+        <!-- Top Navigation Bar -->
+        <HBox styleClass="topbar" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+            <children>
+                <Button text="← Dashboard" onAction="#goToDashboard" styleClass="ghost-button"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="Refresh" onAction="#refreshCustomers" styleClass="ghost-button"/>
+            </children>
+        </HBox>
+        
+        <!-- Main Content -->
+        <VBox spacing="20" AnchorPane.topAnchor="70" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" 
+              style="-fx-padding: 20;">
+            <children>
+                <Label text="👥 Customer Management" styleClass="title-label"/>
+                
+                <!-- Customers Table -->
+                <VBox styleClass="card">
+                    <children>
+                        <Label text="Customers" styleClass="subtitle-label"/>
+                        <TableView fx:id="customersTable" prefHeight="400">
+                            <columns>
+                                <TableColumn fx:id="customerIdColumn" text="Customer ID" prefWidth="120"/>
+                                <TableColumn fx:id="nameColumn" text="Name" prefWidth="300"/>
+                                <TableColumn fx:id="contactColumn" text="Contact" prefWidth="200"/>
+                            </columns>
+                        </TableView>
+                    </children>
+                </VBox>
+                
+                <!-- Customer Form -->
+                <VBox styleClass="card">
+                    <children>
+                        <Label text="Add/Edit Customer" styleClass="subtitle-label"/>
+                        <GridPane hgap="15" vgap="15">
+                            <columnConstraints>
+                                <ColumnConstraints percentWidth="20"/>
+                                <ColumnConstraints percentWidth="40"/>
+                                <ColumnConstraints percentWidth="20"/>
+                                <ColumnConstraints percentWidth="20"/>
+                            </columnConstraints>
+                            <children>
+                                <Label text="Name:" styleClass="field-label" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                                <TextField fx:id="nameField" promptText="Customer name" styleClass="form-field" 
+                                           GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                                
+                                <Label text="Contact:" styleClass="field-label" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+                                <TextField fx:id="contactField" promptText="Phone/Email" styleClass="form-field" 
+                                           GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+                            </children>
+                        </GridPane>
+                        
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <children>
+                                <Button fx:id="addButton" text="Add Customer" onAction="#addCustomer" styleClass="primary-button"/>
+                                <Button fx:id="updateButton" text="Update Customer" onAction="#updateCustomer" styleClass="secondary-button"/>
+                                <Button fx:id="deleteButton" text="Delete Customer" onAction="#deleteCustomer" styleClass="danger-button"/>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

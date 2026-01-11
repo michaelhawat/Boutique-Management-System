@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.demo.controllers.OrderStaffController"
+            prefWidth="1400" prefHeight="800">
+    <children>
+        <!-- Top Navigation Bar -->
+        <HBox styleClass="topbar" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+            <children>
+                <Button text="← Dashboard" onAction="#goToDashboard" styleClass="ghost-button"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="Refresh" onAction="#refreshOrders" styleClass="ghost-button"/>
+            </children>
+        </HBox>
+
+        <!-- Main Content -->
+        <VBox spacing="20" AnchorPane.topAnchor="70" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0"
+              style="-fx-padding: 20;">
+            <children>
+                <Label text="🛍️ Order Management" styleClass="title-label"/>
+
+                <!-- Orders Section -->
+                <HBox spacing="20" HBox.hgrow="ALWAYS">
+                    <children>
+                        <!-- Orders Table -->
+                        <VBox styleClass="card" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label text="Orders" styleClass="subtitle-label"/>
+                                <TableView fx:id="ordersTable" prefHeight="300">
+                                    <columns>
+                                        <TableColumn fx:id="orderIdColumn" text="Order #" prefWidth="80"/>
+                                        <TableColumn fx:id="orderDescriptionColumn" text="Description" prefWidth="150"/>
+                                        <TableColumn fx:id="customerNameColumn" text="Customer" prefWidth="180"/>
+                                        <TableColumn fx:id="statusColumn" text="Status" prefWidth="100"/>
+                                        <TableColumn fx:id="placedAtColumn" text="Placed At" prefWidth="150"/>
+                                        <TableColumn fx:id="totalColumn" text="Total" prefWidth="100"/>
+                                    </columns>
+                                </TableView>
+
+                                <HBox spacing="10" alignment="CENTER_LEFT">
+                                    <children>
+
+                                        <Button fx:id="fulfillOrderButton" text="Fulfill Order" onAction="#fulfillOrder" styleClass="secondary-button"/>
+                                        <Button fx:id="deleteOrderButton" text="Delete Order" onAction="#deleteOrder" styleClass="danger-button"/>
+                                        <Button text="Print Invoice" onAction="#printInvoice" styleClass="primary-button"/>
+
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+
+                        <!-- Create Order Form -->
+                        <VBox styleClass="card" prefWidth="300">
+                            <children>
+                                <Label text="Create New Order" styleClass="subtitle-label"/>
+                                <VBox spacing="15">
+                                    <children>
+                                        <VBox>
+                                            <children>
+                                                <Label text="Customer:" styleClass="field-label"/>
+                                                <ComboBox fx:id="customerCombo" promptText="Select Customer" styleClass="combo-field"/>
+                                            </children>
+                                        </VBox>
+                                        <VBox>
+                                            <children>
+                                                <Label text="Description (optional):" styleClass="field-label"/>
+                                                <TextField fx:id="descriptionField" promptText="Description" styleClass="form-field"/>
+                                            </children>
+                                        </VBox>
+                                        <Button text="+ Add New Customer" onAction="#addNewCustomer" styleClass="secondary-button"/>
+                                        <Button fx:id="createOrderButton" text="Create Order" onAction="#createOrder" styleClass="primary-button"/>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+
+                <!-- Order Items Section -->
+                <HBox spacing="20" HBox.hgrow="ALWAYS">
+                    <children>
+                        <!-- Order Items Table -->
+                        <VBox styleClass="card" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label text="Order Items" styleClass="subtitle-label"/>
+                                <TableView fx:id="orderItemsTable" prefHeight="200">
+                                    <columns>
+                                        <TableColumn fx:id="productIdColumn" text="Product ID" prefWidth="100"/>
+                                        <TableColumn fx:id="productNameColumn" text="Product Name" prefWidth="180"/>
+                                        <TableColumn fx:id="unitPriceColumn" text="Unit Price" prefWidth="100"/>
+                                        <TableColumn fx:id="quantityColumn" text="Quantity" prefWidth="80"/>
+                                        <TableColumn fx:id="subtotalColumn" text="Subtotal" prefWidth="100"/>
+
+                                    </columns>
+                                </TableView>
+
+                                <HBox spacing="10" alignment="CENTER_LEFT">
+                                    <children>
+                                        <Button fx:id="removeItemButton" text="Remove Item" onAction="#removeOrderItem" styleClass="danger-button"/>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+
+                        <!-- Add Item Form -->
+                        <VBox styleClass="card" prefWidth="300">
+                            <children>
+                                <Label text="Add Item to Order" styleClass="subtitle-label"/>
+                                <VBox spacing="15">
+                                    <children>
+                                        <VBox>
+                                            <children>
+                                                <Label text="Product:" styleClass="field-label"/>
+                                                <ComboBox fx:id="productCombo" promptText="Select Product" styleClass="combo-field"/>
+                                            </children>
+                                        </VBox>
+                                        <VBox>
+                                            <children>
+                                                <Label text="Quantity:" styleClass="field-label"/>
+                                                <TextField fx:id="quantityField" promptText="1" styleClass="form-field"/>
+                                            </children>
+                                        </VBox>
+                                        <Button fx:id="addItemButton" text="Add Item" onAction="#addOrderItem" styleClass="primary-button"/>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

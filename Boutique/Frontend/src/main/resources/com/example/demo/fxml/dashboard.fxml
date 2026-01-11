@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.demo.controllers.DashboardController"
+            prefWidth="1200" prefHeight="800">
+    <children>
+        <!-- Top Navigation Bar -->
+        <HBox styleClass="topbar" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+            <children>
+                <Label text="🛍️ Boutique Operations Hub" styleClass="title-label"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="Refresh" onAction="#refreshData" styleClass="ghost-button"/>
+                <Button text="Logout" onAction="#logout" styleClass="danger-button"/>
+            </children>
+        </HBox>
+        
+        <!-- Main Content -->
+        <VBox spacing="20" AnchorPane.topAnchor="70" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" 
+              style="-fx-padding: 20;">
+            <children>
+                <!-- Statistics Cards -->
+                <HBox spacing="20" alignment="CENTER_LEFT">
+                    <children>
+                        <VBox styleClass="card" prefWidth="200">
+                            <children>
+                                <Label text="Total Orders" styleClass="subtitle-label"/>
+                                <Label fx:id="totalOrdersLabel" text="0" styleClass="title-label"/>
+                            </children>
+                        </VBox>
+                        <VBox styleClass="card" prefWidth="200">
+                            <children>
+                                <Label text="Pending Orders" styleClass="subtitle-label"/>
+                                <Label fx:id="pendingOrdersLabel" text="0" styleClass="title-label"/>
+                            </children>
+                        </VBox>
+                        <VBox styleClass="card" prefWidth="200">
+                            <children>
+                                <Label text="Fulfilled Orders" styleClass="subtitle-label"/>
+                                <Label fx:id="fulfilledOrdersLabel" text="0" styleClass="title-label"/>
+                            </children>
+                        </VBox>
+                        <VBox styleClass="card" prefWidth="200">
+                            <children>
+                                <Label text="Inventory Value" styleClass="subtitle-label"/>
+                                <Label fx:id="inventoryValueLabel" text="0$" styleClass="title-label"/>
+                            </children>
+                        </VBox>
+                        <VBox styleClass="card" prefWidth="200">
+                            <children>
+                                <Label text="Low Stock Items" styleClass="subtitle-label"/>
+                                <Label fx:id="lowStockLabel" text="0" styleClass="title-label"/>
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+                
+                <!-- Navigation Buttons -->
+                <HBox spacing="15" alignment="CENTER_LEFT">
+                    <children>
+                        <Button text="📋 Orders" onAction="#goToOrders" styleClass="primary-button"/>
+                        <Button text="📦 Inventory" onAction="#goToProducts" styleClass="primary-button"/>
+                        <Button text="👥 Customers" onAction="#goToCustomers" styleClass="primary-button"/>
+                        <Button text="📊 Reports" onAction="#goToReports" styleClass="primary-button"/>
+                    </children>
+                </HBox>
+                
+                <!-- Data Section -->
+                <HBox spacing="20" HBox.hgrow="ALWAYS">
+                    <children>
+                        <!-- Recent Orders -->
+                        <VBox styleClass="card" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label text="Recent Orders" styleClass="title-label"/>
+                                <TableView fx:id="recentOrdersTable" prefHeight="320">
+                                    <columns>
+                                        <TableColumn fx:id="recentOrderIdColumn" text="Order #" prefWidth="80"/>
+                                        <TableColumn fx:id="recentCustomerColumn" text="Customer" prefWidth="160"/>
+                                        <TableColumn fx:id="recentStatusColumn" text="Status" prefWidth="100"/>
+                                        <TableColumn fx:id="recentPlacedAtColumn" text="Placed At" prefWidth="160"/>
+                                        <TableColumn fx:id="recentTotalColumn" text="Total" prefWidth="100"/>
+                                    </columns>
+                                </TableView>
+                            </children>
+                        </VBox>
+                        
+                        <!-- Low Stock -->
+                        <VBox styleClass="card" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label text="Low Stock Alerts" styleClass="title-label"/>
+                                <TableView fx:id="lowStockTable" prefHeight="320">
+                                    <columns>
+                                        <TableColumn fx:id="lowStockNameColumn" text="Product" prefWidth="150"/>
+                                        <TableColumn fx:id="lowStockCategoryColumn" text="Category" prefWidth="150"/>
+                                        <TableColumn fx:id="lowStockQtyColumn" text="Qty" prefWidth="80"/>
+                                    </columns>
+                                </TableView>
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.demo.controllers.ProductController"
+            prefWidth="1200" prefHeight="800">
+    <children>
+        <!-- Top Navigation Bar -->
+        <HBox styleClass="topbar" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+            <children>
+                <Button text="← Dashboard" onAction="#goToDashboard" styleClass="ghost-button"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="Refresh" onAction="#refreshProducts" styleClass="ghost-button"/>
+            </children>
+        </HBox>
+        
+        <!-- Main Content -->
+        <VBox spacing="20" AnchorPane.topAnchor="70" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" 
+              style="-fx-padding: 20;">
+            <children>
+                <Label text="👜 Product Management" styleClass="title-label"/>
+                
+                <!-- Products Table -->
+                <VBox styleClass="card">
+                    <children>
+                        <Label text="Products" styleClass="subtitle-label"/>
+                        <TableView fx:id="productsTable" prefHeight="400">
+                            <columns>
+                                <TableColumn fx:id="productIdColumn" text="ID" prefWidth="60"/>
+                                <TableColumn fx:id="nameColumn" text="Name" prefWidth="200"/>
+                                <TableColumn fx:id="categoryColumn" text="Category" prefWidth="150"/>
+                                <TableColumn fx:id="priceColumn" text="Price" prefWidth="100"/>
+                                <TableColumn fx:id="stockColumn" text="Stock" prefWidth="80"/>
+                            </columns>
+                        </TableView>
+                    </children>
+                </VBox>
+                
+                <!-- Product Form -->
+                <VBox styleClass="card">
+                    <children>
+                        <Label text="Add/Edit Product" styleClass="subtitle-label"/>
+                        <GridPane hgap="15" vgap="15">
+                            <columnConstraints>
+                                <ColumnConstraints percentWidth="20"/>
+                                <ColumnConstraints percentWidth="30"/>
+                                <ColumnConstraints percentWidth="20"/>
+                                <ColumnConstraints percentWidth="30"/>
+                            </columnConstraints>
+                            <children>
+                                <Label text="Name:" styleClass="field-label" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                                <TextField fx:id="nameField" promptText="Product name" styleClass="form-field" 
+                                           GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                                <Label text="Category:" styleClass="field-label" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+                                <ComboBox fx:id="categoryCombo" styleClass="combo-field"
+                                          GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+
+
+                                <Label text="Price:" styleClass="field-label" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                                <TextField fx:id="priceField" promptText="0.00" styleClass="form-field" 
+                                           GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                                
+                                <Label text="Stock:" styleClass="field-label" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+                                <TextField fx:id="stockField" promptText="0" styleClass="form-field" 
+                                           GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+                            </children>
+                        </GridPane>
+                        
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <children>
+                                <Button fx:id="addButton" text="Add Product" onAction="#addProduct" styleClass="primary-button"/>
+                                <Button fx:id="updateButton" text="Update Product" onAction="#updateProduct" styleClass="secondary-button"/>
+                                <Button fx:id="deleteButton" text="Delete Product" onAction="#deleteProduct" styleClass="danger-button"/>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>
